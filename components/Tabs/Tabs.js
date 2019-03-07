@@ -5,11 +5,14 @@ class Tabs {
     this.element.querySelectorAll(".tabs-links .tabs-link")
       .forEach(link => this.links.push(new TabLink(link)));
     this.selected = this.links[0];
+    this.container = this.element.querySelector(".tabs-items");
+    this.container.style.height = this.selected.tabItem.element.clientHeight + 120 + 'px';
     this.links.forEach(link => {
       link.element.addEventListener('click', (event) => {
         if (event.target !== this.selected.element) {
           this.selected.deselect();
           this.selected = this.links.find(link => link.element === event.target);
+          this.container.style.height = this.selected.tabItem.element.scrollHeight + 120 + 'px';
         }
       });
     });
