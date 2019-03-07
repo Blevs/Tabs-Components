@@ -6,13 +6,13 @@ class Tabs {
       .forEach(link => this.links.push(new TabLink(link)));
     this.selected = this.links[0];
     this.container = this.element.querySelector(".tabs-items");
-    this.container.style.height = this.selected.tabItem.element.clientHeight + 120 + 'px';
+    this.resize();
     this.links.forEach(link => {
       link.element.addEventListener('click', (event) => {
         if (event.target !== this.selected.element) {
           this.selected.deselect();
           this.selected = this.links.find(link => link.element === event.target);
-          this.container.style.height = this.selected.tabItem.element.scrollHeight + 120 + 'px';
+          this.resize();
         }
       });
     });
@@ -21,11 +21,15 @@ class Tabs {
       if (!this.resizeLock) {
         this.resizeLock = true;
         setTimeout(() => {
-          this.container.style.height = this.selected.tabItem.element.scrollHeight + 120 + 'px';
+          this.resize();
           this.resizeLock = false;
         }, 66);
       }
     });
+  }
+
+  resize() {
+    this.container.style.height = this.selected.tabItem.element.scrollHeight + 120 + 'px';
   }
 }
 
