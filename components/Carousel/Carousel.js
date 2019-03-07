@@ -27,20 +27,16 @@ class Carousel {
     this.element.appendChild(indicatorsSpan);
     this.indicators[0].classList.add('show');
     // scroll
-    this.next.addEventListener('click', () => {
-      this.images[this.selected].classList.remove('show');
-      this.indicators[this.selected].classList.remove('show');
-      this.selected = (this.selected + 1) % this.images.length;
-      this.images[this.selected].classList.add('show');
-      this.indicators[this.selected].classList.add('show');
-    });
-    this.prev.addEventListener('click', () => {
-      this.images[this.selected].classList.remove('show');
-      this.indicators[this.selected].classList.remove('show');
-      this.selected = (this.selected + this.images.length - 1) % this.images.length;
-      this.images[this.selected].classList.add('show');
-      this.indicators[this.selected].classList.add('show');
-    });
+    this.next.addEventListener('click', () => this.iterImage(1));
+    this.prev.addEventListener('click', () => this.iterImage(-1));
+  }
+
+  iterImage(num) {
+    this.images[this.selected].classList.remove('show');
+    this.indicators[this.selected].classList.remove('show');
+    this.selected = (this.images.length + (this.selected + (num % this.images.length))) % this.images.length;
+    this.images[this.selected].classList.add('show');
+    this.indicators[this.selected].classList.add('show');
   }
 }
 
