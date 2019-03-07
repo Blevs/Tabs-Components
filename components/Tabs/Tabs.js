@@ -16,6 +16,16 @@ class Tabs {
         }
       });
     });
+    this.resizeLock = false;
+    window.addEventListener('resize', (event) => {
+      if (!this.resizeLock) {
+        this.resizeLock = true;
+        setTimeout(() => {
+          this.container.style.height = this.selected.tabItem.element.scrollHeight + 120 + 'px';
+          this.resizeLock = false;
+        }, 66);
+      }
+    });
   }
 }
 
