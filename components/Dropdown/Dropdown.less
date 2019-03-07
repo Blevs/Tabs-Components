@@ -12,6 +12,9 @@
     &:hover {
       background-color: @lambda-light-red;
     }
+    &:active {
+        background-color: @lambda-red;
+    }
   }
   .dropdown-content {
     width: 100%;
@@ -22,6 +25,8 @@
     align-items: center;  
     margin-top: 10px;
     border: 2.5px solid @lambda-red;
+    transform-origin: top;
+    visibility: hidden;
   }
   .dropdown-link {
     width: 100%;
@@ -36,11 +41,38 @@
     }
   }
   .dropdown-hidden {
-    display: none;
+    animation: slideout 0.3s;
+    visibility: hidden;
+  }
+  .dropdown-visible {
+    animation: slidein 0.3s;
+    visibility: visible;
   }
 }
 
+@keyframes slideout {
+    0% {
+        visibility: visible;
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    100% {
+        visibility: visible;
+        transform: scaleY(0);
+        opacity: 0;
+    }
+}
 
+@keyframes slidein {
+    0% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
 
 
 

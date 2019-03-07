@@ -19,6 +19,9 @@
 .dropdown .dropdown-button:hover {
   background-color: #be2530;
 }
+.dropdown .dropdown-button:active {
+  background-color: #931d25;
+}
 .dropdown .dropdown-content {
   width: 100%;
   position: absolute;
@@ -28,6 +31,8 @@
   align-items: center;
   margin-top: 10px;
   border: 2.5px solid #931d25;
+  transform-origin: top;
+  visibility: hidden;
 }
 .dropdown .dropdown-link {
   width: 100%;
@@ -42,7 +47,34 @@
   background-color: #931d25;
 }
 .dropdown .dropdown-hidden {
-  display: none;
+  animation: slideout 0.3s;
+  visibility: hidden;
+}
+.dropdown .dropdown-visible {
+  animation: slidein 0.3s;
+  visibility: visible;
+}
+@keyframes slideout {
+  0% {
+    visibility: visible;
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    visibility: visible;
+    transform: scaleY(0);
+    opacity: 0;
+  }
+}
+@keyframes slidein {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }
 .tabs {
   width: 100%;

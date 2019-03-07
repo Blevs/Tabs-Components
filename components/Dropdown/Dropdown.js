@@ -16,7 +16,13 @@ class Dropdown {
 
   toggleContent() {
     // Toggle the ".dropdown-hidden" class off and on
-    this.content.classList.toggle("dropdown-hidden");
+    if (this.content.classList.contains("dropdown-visible")) {
+      this.content.classList.remove("dropdown-visible");
+      this.content.classList.add("dropdown-hidden");
+    } else {
+      this.content.classList.add("dropdown-visible");
+      this.content.classList.remove("dropdown-hidden");
+    }
   }
 }
 
