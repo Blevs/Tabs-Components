@@ -3,12 +3,27 @@
   position: absolute;
   left: 25px;
   cursor: pointer;
+  font-family: Arial;
+
+
+  .burger {
+      display: inline-block;
+      margin-right: 5px;
+      div {
+          width: 20px;
+          height: 3px;
+          margin: 3px 0 0 0;
+          background-color: white;
+      }
+  }
+  
   .dropdown-button {
     padding: 15px;
-    border: 3px solid @white;
+    border: 3px solid @lambda-light-red;
     color: @white;
     font-size: 20px;
     font-weight: bold;
+    border-radius: 8px;
     &:hover {
       background-color: @lambda-light-red;
     }
