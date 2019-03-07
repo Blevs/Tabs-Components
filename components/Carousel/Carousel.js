@@ -27,8 +27,22 @@ class Carousel {
     this.element.appendChild(indicatorsSpan);
     this.indicators[0].classList.add('show');
     // scroll
-    this.next.addEventListener('click', () => this.iterImage(1));
-    this.prev.addEventListener('click', () => this.iterImage(-1));
+    this.next.addEventListener('click', () => {
+      if (this.autoscroll) {
+        clearInterval(this.autoscroll);
+        this.autoscroll = false;
+      };
+      this.iterImage(1);
+    });
+    this.prev.addEventListener('click', () => {
+      if (this.autoscroll) {
+        clearInterval(this.autoscroll);
+        this.autoscroll = false;
+      };
+      this.iterImage(-1);
+    });
+    // autoscroll
+    this.autoscroll = setInterval(() => this.iterImage(1), 5000);
   }
 
   iterImage(num) {
